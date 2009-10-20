@@ -1,0 +1,33 @@
+--- origsrc/FreeFS/AppRun	2007-09-08 05:33:07.000000000 -0500
++++ src/FreeFS/AppRun	2009-10-19 23:46:30.536492000 -0500
+@@ -5,6 +5,8 @@ PROG=freefs
+ APP_DIR=`dirname "$0"`
+ APP_DIR=`cd "$APP_DIR";pwd`; export APP_DIR
+ 
++export PLATFORM="CYGWIN-ix86"
++
+ if [ x"$PLATFORM" = x"" ]; then
+   ARCH=`uname -m`
+   case $ARCH in
+--- origsrc/FreeFS/AppletRun	2007-09-08 05:33:07.000000000 -0500
++++ src/FreeFS/AppletRun	2009-10-19 23:46:38.096502400 -0500
+@@ -7,6 +7,8 @@ PROG=freefs
+ APP_DIR=`dirname "$0"`
+ APP_DIR=`cd "$APP_DIR";pwd`; export APP_DIR
+ 
++export PLATFORM="CYGWIN-ix86"
++
+ if [ x"$PLATFORM" = x"" ]; then
+   ARCH=`uname -m`
+   case $ARCH in
+--- origsrc/FreeFS/src/configure.in	2007-09-21 07:04:34.000000000 -0500
++++ src/FreeFS/src/configure.in	2009-10-19 23:50:02.636784700 -0500
+@@ -89,7 +89,7 @@ fi
+ AC_MSG_CHECKING(for the mounted fs table)
+ MTAB=/dev/null
+ for f in /etc/mtab /etc/mnttab ; do
+-  if test -r $f ; then
++  if test -e $f ; then
+     MTAB=$f
+   fi
+ done
